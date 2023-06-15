@@ -69,7 +69,9 @@ $(function () {
   });
 
   $('.drop_down_title').click(function () {
-    $(this).siblings('.drop_down_body').slideToggle();
+    if (!$(this).closest('.task_desc._disabled').length) {
+      $(this).siblings('.drop_down_body').slideToggle();
+    }
   });
 
   $('.drop_down_item').click(function () {
@@ -111,7 +113,6 @@ $(function () {
     const renderPrev = (selector, files) => {
       files.forEach(element => {
         if (element.type.indexOf('svg') !== -1) {
-          console.log(element);
           selector.html(
             selector.html() +
               `
@@ -125,7 +126,6 @@ $(function () {
           `
           );
         } else if (element.type.indexOf('image') !== -1) {
-          console.log(element);
           selector.html(
             selector.html() + `<img class="image" src="${URL.createObjectURL(element)}" ></img>`
           );
@@ -135,11 +135,13 @@ $(function () {
 
     $('.drag_n_drop_input').on('drop', function (e) {
       const droppedFiles = Array.from(e.originalEvent.dataTransfer.files);
+      $(this).addClass('_active');
       renderPrev($(this).children('.preview'), droppedFiles);
     });
 
     $('.drag_n_drop_input>input').on('change', function () {
       const files = Array.from(this.files);
+      $(this).parent().addClass('_active');
       renderPrev($(this).siblings('.preview'), files);
     });
   }
@@ -244,6 +246,7 @@ $(function () {
     });
 
     $('.input').click(function () {
+      if ($(this).closest('.task_desc._disabled').length) return;
       $(this).parent().toggleClass('_active');
       $(this).siblings('.calendar').children('.main_part').removeClass(['_month', '_day', '_time']);
     });
@@ -321,6 +324,40 @@ $(function () {
     };
   }
 
+  function addSubtask() {
+    $('.add_subtask_button').click(function () {
+      const inputValue = $(this).siblings('.input_desc').children().val();
+      if (inputValue === '') return;
+      const oldHtml = $(this).siblings('.values').html();
+      $(this)
+        .siblings('.values')
+        .html(
+          oldHtml +
+            `
+            <div class="subtask_added">
+              <div class="icon">
+                <img src="img/tick.svg" alt="" />
+              </div>
+              <div class="text">${inputValue}</div>
+            </div>
+             `
+        );
+      $(this).siblings('.input_desc').children().val('');
+    });
+  }
+
+  function commentsSection() {
+    $('.comment_section>.arrow').click(function (e) {
+      $(this).parent().parent().parent().toggleClass('_active');
+    });
+
+    $('.comments_header>img').click(function (e) {
+      $(this).parent().parent().remove('_active');
+    });
+  }
+
+  commentsSection();
   dragNdrop();
   calendar();
+  addSubtask();
 });

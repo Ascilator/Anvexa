@@ -186,6 +186,7 @@ main {
   display: flex;
   align-items: stretch;
   gap: 12px;
+  display: none;
 }
 .drag_n_drop_input .preview .image {
   flex: 0 1 84px;
@@ -234,6 +235,9 @@ main {
   justify-content: center;
   transition: 0.3s;
 }
+.drag_n_drop_input._active .preview {
+  display: flex;
+}
 .drag_n_drop_input.is-dragover label {
   background: rgba(49, 154, 226, 0.1);
   border: 1px dashed rgba(30, 31, 44, 0.3);
@@ -277,6 +281,57 @@ main {
 .calendar_cont._active .calendar {
   opacity: 1;
   visibility: visible;
+}
+
+.subtusk_cont {
+  max-width: 500px;
+}
+
+.subtask .input_desc input {
+  width: 100%;
+  padding: 8px 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 145%;
+  color: #1e1f2c;
+  display: block;
+  border: none;
+  border-bottom: 1px solid rgba(30, 31, 44, 0.1176470588);
+}
+.subtask .values .subtask_added {
+  display: flex;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(30, 31, 44, 0.1176470588);
+}
+.subtask .values .subtask_added .icon {
+  margin-right: 10px;
+}
+.subtask .values .subtask_added .text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #1e1f2c;
+  opacity: 0.7;
+}
+.subtask .add_subtask_button {
+  cursor: pointer;
+  margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 124%;
+  letter-spacing: -0.01em;
+  color: #1e1f2c;
+  padding: 8px 15px 8px 10px;
+  border: 1px solid rgba(30, 31, 44, 0.3);
+  border-radius: 10px;
+}
+.subtask .add_subtask_button span {
+  opacity: 0.6;
 }
 
 .calendar {
@@ -476,5 +531,233 @@ main {
 }
 .calendar .calendar_footer .cancel {
   font-weight: 400;
+  color: #1e1f2c;
+}
+
+.coment_container {
+  max-width: 500px;
+}
+
+.comment_section {
+  display: flex;
+  align-items: center;
+  padding: 25px 30px;
+  background: #f1eff8;
+  border-top: 1px solid #f8f7ff;
+}
+.comment_section .coment {
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: rgba(30, 31, 44, 0.5098039216);
+}
+.comment_section .coment span {
+  padding-left: 14px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: #1e1f2c;
+}
+.comment_section .last {
+  margin-left: auto;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: #1e1f2c;
+  opacity: 0.5;
+  margin-right: 25px;
+}
+.comment_section .arrow {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.comment_section._dark {
+  background: #dedae9;
+  border-top: 1px solid #f8f7ff;
+}
+.comment_section._reverse .arrow {
+  order: 1;
+  transform: scale(-1, 1);
+}
+.comment_section._reverse .coment,
+.comment_section._reverse .last {
+  order: 2;
+  margin-right: 0;
+}
+
+.task_container {
+  display: flex;
+}
+
+.task_desc {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1333333333);
+  align-items: stretch;
+  display: flex;
+  max-width: 560px;
+}
+.task_desc .left_part {
+  padding: 20px 30px;
+  flex: 0 0 560px;
+  width: 560px;
+}
+.task_desc .left_part .task_desc_header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.task_desc .left_part .task_desc_header .icon {
+  margin-right: 12px;
+}
+.task_desc .left_part .task_desc_header .title {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 124%;
+  letter-spacing: -0.01em;
+  color: #0b0c17;
+}
+.task_desc .left_part .task_desc_header .flag {
+  margin-left: auto;
+}
+.task_desc .left_part .task_desc_ass {
+  display: flex;
+  align-items: center;
+}
+.task_desc .left_part .task_desc_ass_2 {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.task_desc .left_part .textarea {
+  margin-top: 30px;
+}
+.task_desc .left_part .textarea .textarea_title {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 145%;
+  color: #1e1f2c;
+  margin-bottom: 5px;
+}
+.task_desc .left_part .textarea .textarea_body p {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 132%;
+  color: #1e1f2c;
+  margin-bottom: 20px;
+}
+.task_desc .left_part .textarea .textarea_body p:last-child {
+  margin-bottom: 0;
+}
+.task_desc .left_part .files_input {
+  margin-top: 30px;
+}
+.task_desc .left_part .input_desc {
+  margin-top: 30px;
+}
+.task_desc .left_part .comment_section {
+  margin: 130px -30px -20px;
+}
+.task_desc .right_part {
+  padding: 20px;
+  flex: 0 0 320px;
+  background: #f1eff8;
+  display: none;
+}
+.task_desc .textarea .tox {
+  height: 200px !important;
+  width: 100%;
+}
+.task_desc._not_disabled .task_desc_header .icon,
+.task_desc._not_disabled .task_desc_header .title {
+  display: none;
+}
+.task_desc._not_disabled .task_desc_header .input_title {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 124%;
+  letter-spacing: -0.01em;
+  color: #0b0c17;
+  opacity: 0.5;
+  border: none;
+}
+.task_desc._disabled .task_desc_header .input_title {
+  display: none;
+}
+.task_desc._active {
+  max-width: 880px;
+}
+.task_desc._active .right_part {
+  display: flex;
+}
+.task_desc._reverse {
+  flex-direction: row-reverse;
+}
+
+.coments {
+  display: flex;
+  flex-direction: column;
+}
+.coments .comments_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 124%;
+  letter-spacing: -0.04em;
+  color: #1e1f2c;
+  margin-bottom: 40px;
+}
+.coments .comments {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 15px;
+}
+.coments .comments .upper_part {
+  display: flex;
+  align-items: center;
+}
+.coments .comments .upper_part .img {
+  flex: 0 0 30px;
+  margin-right: 6px;
+}
+.coments .comments .upper_part .img img {
+  border-radius: 50%;
+}
+.coments .comments .upper_part .text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.01em;
+  color: rgba(30, 31, 44, 0.4941176471);
+}
+.coments .comments .upper_part .text span {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #1e1f2c;
+}
+.coments .comments .comment {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 124%;
+  color: #1e1f2c;
+  padding: 5px 0 0 35px;
+}
+.coments .comments_footer {
+  margin-top: auto;
+}
+
+.input_coment input {
+  padding: 9px 15px 9px 0px;
+  background: #dedae9;
+  border-radius: 12px 12px 0px 12px;
+  border: none;
+  padding: 15px 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
   color: #1e1f2c;
 }
